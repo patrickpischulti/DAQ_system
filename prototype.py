@@ -50,7 +50,7 @@ timeInterval = float(sys.argv[2])
 startTime = datetime.now()
 filePath = "/home/pi/Desktop/tests/" + startTime.strftime("%Y-%m-%d-%H%M%S")
 logFileName = filePath + "/logfile.txt"
-figureName = filePath + "Figure.png"
+figureName = filePath + "/figure.png"
 
 try:
     os.mkdir(filePath)
@@ -84,7 +84,7 @@ runDAQ = True
 #date = datetime.now().strftime("%Y%m%d_%H-%M-%S")
 #print(date)
 
-eData = []
+timeData = []
 yData = []
 
 i = 0
@@ -97,7 +97,7 @@ while i < timeRamp:
         #print('Run = %s' %i)
     timeElapsed = time.time() - startTime
 
-    eData.append(round(timeElapsed,0))
+    timeData.append(round(timeElapsed,0))
     yData.append(round(float(random.random())*1000,0))
 
     #Capture Photo
@@ -143,7 +143,7 @@ try:
         #print('DAQ loop iteration = %s' %j)
 
         timeElapsed = time.time() - startTime
-        eData.append(round(timeElapsed,0))
+        timeData.append(round(timeElapsed,0))
         yData.append(round(float(random.random())*1000,0))
 
         #Capture Photo
@@ -179,7 +179,7 @@ except KeyboardInterrupt:
       print(x)
 
     fig, ax = plt.subplots(1, 1)
-    my_plotter(ax, eData, yData, {'marker': 'x'})
+    my_plotter(ax, timeData, yData, {'marker': 'x'})
     fig.savefig(figureName)
 
     print('...DAQ Stopped!')
