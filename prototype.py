@@ -50,6 +50,7 @@ timeInterval = float(sys.argv[2])
 startTime = datetime.now()
 filePath = "/home/pi/Desktop/tests/" + startTime.strftime("%Y-%m-%d-%H%M%S")
 logFileName = filePath + "/logfile.txt"
+figureName = filePath + "Figure.png"
 
 try:
     os.mkdir(filePath)
@@ -179,6 +180,6 @@ except KeyboardInterrupt:
 
     fig, ax = plt.subplots(1, 1)
     my_plotter(ax, eData, yData, {'marker': 'x'})
-    fig.savefig('/Users/patrickpischulti/Pictures/fig.png')
+    fig.savefig(figureName)
 
     print('...DAQ Stopped!')
