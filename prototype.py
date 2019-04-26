@@ -98,10 +98,10 @@ while i < timeRamp:
     timeElapsed = time.time() - startTime
 
     timeData.append(round(timeElapsed,0))
-    yData.append(round(float(random.random())*1000,0))
+    #yData.append(round(float(random.random())*1000,0))
 
     #Capture Photo
-    picName = str(timeElapsed) + '.jpg'
+    picName = str(round(timeElapsed,0)) + '.jpg'
     completeFilePath = filePath +"/"+ picName
 
     with picamera.PiCamera() as camera:
@@ -111,6 +111,7 @@ while i < timeRamp:
 
     #Capture Envrionmental conditions
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    yData.append(humidity)
     f.write("Test number: " + str(timeElapsed))
 
     #Read Analog input
@@ -144,10 +145,10 @@ try:
 
         timeElapsed = time.time() - startTime
         timeData.append(round(timeElapsed,0))
-        yData.append(round(float(random.random())*1000,0))
+        #yData.append(round(float(random.random())*1000,0))
 
         #Capture Photo
-        picName = str(timeElapsed) + '.jpg'
+        picName = str(round(timeElapsed,0)) + '.jpg'
         completeFilePath = filePath +"/"+ picName
 
         with picamera.PiCamera() as camera:
@@ -157,6 +158,7 @@ try:
 
         #Capture Envrionmental conditions
         humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+        yData.append(humidity)
         f.write("Test number: " + str(timeElapsed))
 
         #Read Analog input
