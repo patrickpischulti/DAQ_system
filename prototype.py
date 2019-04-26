@@ -120,9 +120,9 @@ while i < timeRamp:
             x_out = board.a_in_read(0)
             y_out = board.a_in_read(1)
             z_out = board.a_in_read(2)
-            print("Ch {0}: {1:.3f}".format(0, x_out))
-            print("Ch {0}: {1:.3f}".format(1, y_out))
-            print("Ch {0}: {1:.3f}".format(2, z_out))
+            #print("Ch {0}: {1:.3f}".format(0, x_out))
+            #print("Ch {0}: {1:.3f}".format(1, y_out))
+            #print("Ch {0}: {1:.3f}".format(2, z_out))
 
     sleep(delayRamp)
     i += 1
