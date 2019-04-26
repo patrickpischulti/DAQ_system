@@ -41,6 +41,10 @@ def set_parameters(arguments):
         rampMode = True
         print('Its set!')
 
+def calc_elapsed_time():
+    round(t,0) = time.time() - startTime
+    return t
+
 set_parameters(str(sys.argv))
 
 timeRamp = float(sys.argv[1])
@@ -95,13 +99,12 @@ while i < timeRamp:
     if i == 0:
         print('Started ramping recording at %s...' %time.ctime())
         #print('Run = %s' %i)
-    timeElapsed = time.time() - startTime
-
-    timeData.append(round(timeElapsed,0))
+    timeElapsed = calc_elapsed_time()
+    timeData.append(timeElapsed)
     #yData.append(round(float(random.random())*1000,0))
 
     #Capture Photo
-    picName = str(round(timeElapsed,0)) + '.jpg'
+    picName = str(timeElapsed) + '.jpg'
     completeFilePath = filePath +"/"+ picName
 
     with picamera.PiCamera() as camera:
@@ -143,12 +146,13 @@ try:
             print('Main DAQ started at %s...' %time.ctime())
         #print('DAQ loop iteration = %s' %j)
 
-        timeElapsed = time.time() - startTime
-        timeData.append(round(timeElapsed,0))
+        timeElapsed = calc_elapsed_time()
+        timeData.append(timeElapsed)
+
         #yData.append(round(float(random.random())*1000,0))
 
         #Capture Photo
-        picName = str(round(timeElapsed,0)) + '.jpg'
+        picName = str(timeElapsed) + '.jpg'
         completeFilePath = filePath +"/"+ picName
 
         with picamera.PiCamera() as camera:
