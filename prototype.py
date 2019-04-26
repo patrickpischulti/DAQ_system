@@ -115,7 +115,7 @@ while i < timeRamp:
     #Read Analog input
     for entry in board_list:
         if entry.id == HatIDs.MCC_118:
-            print("Board {}: MCC 118".format(entry.address))
+            #print("Board {}: MCC 118".format(entry.address))
             board = mcc118(entry.address)
             x_out = board.a_in_read(0)
             y_out = board.a_in_read(1)
@@ -161,14 +161,14 @@ try:
         #Read Analog input
         for entry in board_list:
             if entry.id == HatIDs.MCC_118:
-                print("Board {}: MCC 118".format(entry.address))
+                #print("Board {}: MCC 118".format(entry.address))
                 board = mcc118(entry.address)
                 x_out = board.a_in_read(0)
                 y_out = board.a_in_read(1)
                 z_out = board.a_in_read(2)
-                print("Ch {0}: {1:.3f}".format(0, x_out))
-                print("Ch {0}: {1:.3f}".format(1, y_out))
-                print("Ch {0}: {1:.3f}".format(2, z_out))
+                #print("Ch {0}: {1:.3f}".format(0, x_out))
+                #print("Ch {0}: {1:.3f}".format(1, y_out))
+                #print("Ch {0}: {1:.3f}".format(2, z_out))
 
         j += 1
         sleep(timeInterval)
