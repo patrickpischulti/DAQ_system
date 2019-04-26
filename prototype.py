@@ -175,7 +175,7 @@ try:
         sleep(timeInterval)
 
 except KeyboardInterrupt:
-    for x in eData:
+    for x in timeData:
       print(x)
 
     fig, ax = plt.subplots(1, 1)
