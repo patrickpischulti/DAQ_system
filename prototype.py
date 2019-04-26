@@ -42,8 +42,8 @@ def set_parameters(arguments):
         print('Its set!')
 
 def calc_elapsed_time():
-    round(t,0) = time.time() - startTime
-    return t
+    t = time.time() - startTime
+    return round(t,0)
 
 set_parameters(str(sys.argv))
 
