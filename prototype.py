@@ -45,6 +45,12 @@ def calc_elapsed_time():
     t = time.time() - startTime
     return round(t,0)
 
+def capture_photo(path):
+    with picamera.PiCamera() as camera:
+        camera.resolution = (1280,720)
+        camera.capture(path)
+
+
 set_parameters(str(sys.argv))
 
 timeRamp = float(sys.argv[1])
@@ -85,9 +91,6 @@ delayRamp = 1/freqRamp
 
 runDAQ = True
 
-#date = datetime.now().strftime("%Y%m%d_%H-%M-%S")
-#print(date)
-
 timeData = []
 yData = []
 
@@ -107,10 +110,12 @@ while i < timeRamp:
     picName = str(timeElapsed) + '.jpg'
     completeFilePath = filePath +"/"+ picName
 
-    with picamera.PiCamera() as camera:
-        camera.resolution = (1280,720)
-        camera.capture(completeFilePath)
-        #print("Captured at: " + picTime)
+    capture_photo(completeFilePath)
+
+    # with picamera.PiCamera() as camera:
+    #     camera.resolution = (1280,720)
+    #     camera.capture(completeFilePath)
+    #     #print("Captured at: " + picTime)
 
     #Capture Envrionmental conditions
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
