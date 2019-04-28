@@ -49,6 +49,7 @@ def capture_photo(path):
     with picamera.PiCamera() as camera:
         camera.resolution = (1280,720)
         camera.capture(path)
+        return
 
 
 set_parameters(str(sys.argv))
